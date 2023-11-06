@@ -12,6 +12,9 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      opacity: {
+        67: ".67",
+      },
     },
   },
   plugins: [require("@tailwindcss/forms")],

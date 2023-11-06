@@ -1,8 +1,8 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Albert_Sans } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 
-const inter = Inter({ subsets: ["latin"] });
+const albertSanse = Albert_Sans({ subsets: ["latin"] });
 
 export const metadata = {
   title: "AI Getting Started",
@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className={inter.className}>{children}</body>
+        <body className={albertSanse.className}>{children}</body>
       </html>
     </ClerkProvider>
   );
