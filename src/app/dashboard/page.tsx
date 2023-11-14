@@ -2,7 +2,7 @@
 
 import React from "react";
 import MiddleCardAnimation from "@/components/organism/MiddleCardAnimation";
-import PathAnimation from "@/components/PathAnimation";
+import PathAnimation from "@/components/organism/PathAnimation";
 
 const fourPaths = [
   {
@@ -12,6 +12,7 @@ const fourPaths = [
     moveX: -100,
     moveY: -250,
     primaryColor: "#CEEAD6",
+    imageUrl: "/images/bonsai.svg",
   },
   {
     title: "Gratitude Path",
@@ -20,6 +21,7 @@ const fourPaths = [
     moveX: 100,
     moveY: -250,
     primaryColor: "#D2E3FC",
+    imageUrl: "/images/walk.svg",
   },
   {
     title: "Goal Setting Gateway",
@@ -28,6 +30,7 @@ const fourPaths = [
     moveX: -100,
     moveY: 250,
     primaryColor: "#F8D2CE",
+    imageUrl: "/images/goals.svg",
   },
   {
     title: "Mindfulness Corner",
@@ -36,13 +39,14 @@ const fourPaths = [
     moveX: 100,
     moveY: 250,
     primaryColor: "#FFEFC3",
+    imageUrl: "/images/mindful.svg",
   },
 ];
 
 const Dashboard = () => {
   return (
     <div className="grid grid-cols-2 grid-rows-2 gap-4 h-screen overflow-hidden">
-      {fourPaths.map((path) => (
+      {fourPaths.map((path, index) => (
         <PathAnimation
           title={path.title}
           description={path.description}
@@ -50,14 +54,10 @@ const Dashboard = () => {
           moveX={path.moveX}
           moveY={path.moveY}
           primaryColor={path.primaryColor}
+          index={index}
+          imageUrl={path.imageUrl}
         />
       ))}
-      {/* <PathAnimation
-        title={fourPaths[0].title}
-        description={fourPaths[0].description}
-        key={fourPaths[0].title}
-      /> */}
-
       <MiddleCardAnimation />
     </div>
   );

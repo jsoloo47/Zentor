@@ -18,9 +18,7 @@ const MiddleCardAnimation = () => {
           animate={{ opacity: 1, x: 0 }}
           transition={{ ease: "easeOut", duration: 1, delay: 0.5 }}
         >
-          <p className="indent-16" onClick={() => console.log("ur zen")}>
-            Your Zen
-          </p>
+          <p className="indent-16">Your Zen</p>
         </motion.div>
       </motion.div>
       <motion.div

@@ -1,6 +1,8 @@
 "use client";
 import React, { FC, useEffect, useState } from "react";
-import { calcLength, motion } from "framer-motion";
+import Image from "next/image";
+
+import { motion } from "framer-motion";
 
 type PathAnimationProps = {
   title: string;
@@ -8,6 +10,8 @@ type PathAnimationProps = {
   moveX: number;
   moveY: number;
   primaryColor: string;
+  index: number;
+  imageUrl: string;
 };
 
 const PathAnimation: FC<PathAnimationProps> = ({
@@ -16,6 +20,8 @@ const PathAnimation: FC<PathAnimationProps> = ({
   moveX,
   moveY,
   primaryColor,
+  imageUrl,
+  index,
 }) => {
   const [hover, setHover] = useState(false);
   const [scale, setScale] = useState(8);
@@ -32,13 +38,18 @@ const PathAnimation: FC<PathAnimationProps> = ({
     primary: { backgroundColor: "#fff" },
     secondary: { backgroundColor: primaryColor },
   };
+
+  const animationVariants = {
+    hidden: { x: moveX * 2, y: moveY * 2, opacity: 0 },
+    visible: { x: 0, y: 0, opacity: 1 },
+  };
+
   useEffect(() => {
     // Set up a resize event listener
     const handleResize = () => {
       // Calculate scale based on viewport width
-      // For example, you might decide that at 500px width, the scale should be 1,
-      // and for each additional 100px, the scale increases by 0.1
-      const baseWidth = 0.001; // base width in pixels
+
+      const baseWidth = 0.002; // base width in pixels
       const scaleFactor = 0.47; // scale factor for each 100px increment
 
       const vw = Math.max(
@@ -46,8 +57,7 @@ const PathAnimation: FC<PathAnimationProps> = ({
         window.innerWidth || 0
       );
       const additionalScale = ((vw - baseWidth) / 100) * scaleFactor;
-      const newScale = 1 + Math.max(additionalScale, 0); // Ensure scale doesn't go below 1
-
+      const newScale = 1 + Math.max(additionalScale, 0); // don't allow negative scale
       setScale(newScale);
     };
 
@@ -61,16 +71,31 @@ const PathAnimation: FC<PathAnimationProps> = ({
   }, []);
 
   return (
-    <div
+    <motion.div
       className="flex justify-center items-center flex-col "
-      style={{ zIndex: 10000 }}
+      // style={}
+      variants={animationVariants}
+      initial="hidden"
+      animate="visible"
+      // transition={{ duration: 0.5 }}
+      transition={{ ease: "easeOut", duration: 1, delay: index / 4 }}
+      // transition={{ type: "spring", stiffness: 50 }}
     >
-      <h1 className="text-xl font-bold">{title}</h1>
-      <div
+      <motion.div
         className="circle-container"
         onMouseEnter={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
-        style={{ position: "relative", width: 100, height: 100 }}
+        style={{
+          position: "relative",
+          width: 100,
+          height: 100,
+          cursor: "pointer",
+          left: "200px",
+          top: "-0px",
+        }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ ease: "easeOut", duration: 1, delay: 1 }}
       >
         <motion.div
           style={{
@@ -86,7 +111,10 @@ const PathAnimation: FC<PathAnimationProps> = ({
           variants={colorVariants}
           animate={hover ? "primary" : "secondary"}
           initial="secondary"
-        />
+          className="flex justify-center items-center text-center"
+        >
+          {title}
+        </motion.div>
         <motion.div
           style={{
             width: "100%",
@@ -99,8 +127,22 @@ const PathAnimation: FC<PathAnimationProps> = ({
           variants={expandedCircleVariants}
           animate={hover ? "hover" : "initial"}
         />
-      </div>
-    </div>
+      </motion.div>
+      {/* <h1 className="text-l font-bold" style={{ zIndex: 1 }}>
+        {title}
+      </h1> */}
+      {/* <p className="text-sm text-center" style={{ zIndex: 1 }}>
+        {description}
+      </p> */}
+      {/* image png */}
+      <Image
+        src={imageUrl}
+        width={300}
+        height={300}
+        alt="test"
+        className="absolute"
+      />
+    </motion.div>
   );
 };
 export default PathAnimation;
