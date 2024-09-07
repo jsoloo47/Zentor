@@ -17,13 +17,4 @@ To enhance performance and user experience, several optimizations were implement
 
 On the database side, indexing strategies were employed to speed up query times, especially for the RAG system's retrieval process. Additionally, a background job system was implemented to handle resource-intensive tasks like periodic re-indexing of journal entries for improved RAG performance.
 
-## Lessons Learned:
-Developing Zentor provided invaluable insights into the practical applications of AI in personal development tools. Key learnings included:
 
-Techniques for effectively combining multiple AI models and technologies (GPT-4, open-source LLMs, and RAG) to create a more powerful and personalized user experience.
-
-Strategies for optimizing AI response times and relevance in a real-time application environment.
-The complexities of building a secure, privacy-focused application that handles sensitive user information.
-The potential of AI to enhance traditional practices like journaling, opening up new avenues for personal growth and self-reflection.
-
-This project not only enhanced technical skills in full-stack development and AI integration but also deepened understanding of how technology can be leveraged to positively impact users' lives and personal development journeys.
