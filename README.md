@@ -1,12 +1,7 @@
 # Zentor - AI-Powered Self-Improvement Journal
 Zentor is an innovative self-improvement journal that leverages advanced AI technologies to provide users with a unique and interactive journaling experience. By combining Large Language Models (LLM) like GPT-4 and open-source alternatives with Retrieval-Augmented Generation (RAG), Zentor transforms traditional journaling into a powerful tool for personal growth and reflection.
 
-<img src="ProjectOverview/Zentor.gif" alt="Zentor is a self-improvements Journal powered by LLM" />
-
-**Link to project:** [Insert Zentor Project Link]
-
-Alt Tag for Screenshot:
-Zentor AI-powered journaling app interface showing text input area and AI-generated insights panel
+<img src="ProjectOverview/Zentor.gif" alt="Zentor is a self-improvements Journal powered by LLM" alt="Zentor AI-powered journaling app interface showing text input area and AI-generated insights panel"/>
 
 ## How It's Made:
 Tech used: React, Node.js, Express, MongoDB, GPT-4 API, Open-source LLMs, Pinecone, HTML, Tailwind, JavaScript
